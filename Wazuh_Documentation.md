@@ -49,11 +49,28 @@ sudo apt install responder -y
 msfconsole
 ```
 1. Use module: `auxiliary/scanner/smb/smb_login`
-2. Set required options (RHOSTS, USER_FILE, etc.)
-3. Run and retrieve valid credentials (e.g., `Administrator:password2`)
-4. Use exploit: `exploit/windows/smb/psexec`
-5. Set required options (e.g., PAYLOAD, LHOST, LPORT)
-6. Get a Meterpreter session.
+   
+      ![Alt text](images/6.png)
+
+2. Check the options
+
+    ![Alt text](images/7.png)
+   
+3. Set required options (RHOSTS, PASS_FILE, etc.)
+
+    ![Alt text](images/8.png)
+   
+4. Run and retrieve valid credentials (e.g., `Administrator:password2`)
+
+    ![Alt text](images/9.png)
+   
+5. Use exploit: `exploit/windows/smb/psexec`
+
+    ![Alt text](images/10.png)
+    
+7. Set required options (RHOSTS,LHSOT, etc.) and Run. Get a Meterpreter session.
+
+     ![Alt text](images/12.png)
 
 ---
 
