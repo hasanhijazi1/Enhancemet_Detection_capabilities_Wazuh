@@ -10,7 +10,7 @@
 
 ### 1. LLMNR Poisoning & NTLMv2 Hash Capture
 
-**Tools:** Responder, Kali Linux, Windows VM
+**Tools:** Responder
 
 **Steps:**
 ```bash
@@ -18,10 +18,25 @@ sudo apt update
 sudo apt install responder -y
 ```
 1. Start Responder on Kali.
+
+ ![Alt text](images/1.png)
+
 2. Wait for the victim Windows machine to query a non-existent hostname.
+
+  ![Alt text](images/2.png)
+
 3. Responder captures the NTLMv2 hash.
+   
+![Alt text](images/3.png)
+
 4. Find the hash in Responder logs.
+   
+  ![Alt text](images/4.png)
+  
 5. Crack it using `john`.
+    
+     ![Alt text](images/5.png)
+    
 
 ---
 
