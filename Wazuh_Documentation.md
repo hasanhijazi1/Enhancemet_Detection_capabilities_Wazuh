@@ -129,11 +129,11 @@ Sysmon64.exe -c
 
 4. Run Notepad (as Administrator) and open `ossec.conf` in the directory below:
 
-    ![Alt text](images/18.png)
+    ![Alt text](images/21.png)
    
 6. Add the configuration below:
 
-    ![Alt text](images/20.png)
+    ![Alt text](images/22.png)
 
 
 ---
