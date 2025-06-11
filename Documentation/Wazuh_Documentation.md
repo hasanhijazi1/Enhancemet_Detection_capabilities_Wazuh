@@ -72,7 +72,7 @@ sudo apt install responder -y
 ```
 1. Start Responder on Kali.
 
- ![Alt text](images/1.png)
+ ![Alt text](Enhancement_detection_capabilities_Wazuh/images/1.png)
 
 2. Wait for the victim Windows machine to query a non-existent hostname.
 
