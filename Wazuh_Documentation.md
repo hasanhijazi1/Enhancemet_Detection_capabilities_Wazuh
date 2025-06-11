@@ -124,7 +124,7 @@ Note:
 Sysmon64.exe -accepteula -i sysmonconfig.xml
 Sysmon64.exe -c
 ```
-3. You should be able to find Syamon here:
+3. You should be able to find Sysmon under windows:
    
     ![Alt text](images/20.png)
 
