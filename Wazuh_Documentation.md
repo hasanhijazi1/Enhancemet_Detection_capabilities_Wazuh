@@ -241,11 +241,10 @@ Then include them in `ossec.conf`.
   </rule>
  
 
-  <!--Detect SMBConnection to untrusted device-->
+  <!--Detect SMB Connection-->
 <rule id="111124" level="10">  
 	<if_group>sysmon_event3</if_group>
 	<field name="win.eventdata.destinationPort" type="pcre2">^445$</field>
-	<list field="win.eventdata.DestinationIp" lookup="not_match_key">etc/lists/trusted_smb_hosts</list>
 	<options>no_full_log</options>
 	<description>smb connection</description>
   </rule>
@@ -263,22 +262,19 @@ Then include them in `ossec.conf`.
   </rule>
  
 
- <!-- only LLMNR+ Untrusted SMB -->
+ <!-- only LLMNR+ SMB Connection -->
 <rule id="111128" level="15" timeframe="10">
   <if_sid>111123</if_sid> <!-- if_matched_sid means that both events have to match in the given timeframe 10 -->
   <if_matched_sid>111125</if_matched_sid>
   <description>possible LLMNR-based Man-in-the-Middle attack with credential capture over SMB</description>
   <mitre>
 	<id>T1557.001</id>
-
   </mitre>
   <group>responder_final</group>
   <options>no_full_log</options>
 </rule>
 
- 
 </group>
-
 
 
 <!-- unauthorized remote login -->
@@ -362,25 +358,24 @@ Then include them in `ossec.conf`.
 
 ---
 
-## Rule `111124`: SMB Connection to Untrusted Device
+## Rule `111124`: SMB Connection
 - **Group**: `sysmon_event3`
-- **Purpose**: Detects outbound SMB (port 445) connections to IPs not in the trusted list(trusted SMb servers).
+- **Purpose**: Detects outbound SMB (port 445) connections.
 - **Conditions**:
-  - Port is 445 (SMB).
-  - Destination IP **not in** `trusted_smb_hosts` list.
+  - DestinationPort is 445 (SMB).
 - **Explanation**:
   - Detects SMB activity.
 
 ---
 
-## Rule `111125`: SMB from System to Untrusted
-- **Purpose**:Raise an alert if it Detects `System` process initiating SMB to untrusted IP.
+## Rule `111125`: SMB from System 
+- **Purpose**:Raise an alert if it Detects `System` process initiating SMB.
 - **Correlates**: `if_matched_sid=111124`
 - **Extra Check**:
   - Image field is exactly `System`.
 - **MITRE**: `T1557.001`
 - **Explanation**:
-  - Indicates automated or unauthorized internal SMB activity.
+  - Indicates automated internal SMB activity.
 
 ---
 
@@ -464,7 +459,6 @@ Then include them in `ossec.conf`.
 │   ├── rules/
 │   │   └── local_rules.xml
 │   ├── lists/
-│   │   └── trusted_smb_hosts
 │   │   └── trusted_remote_hosts
 │   └── ossec.conf
 ```
