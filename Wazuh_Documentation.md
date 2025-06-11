@@ -142,12 +142,12 @@ Sysmon64.exe -c
 ##  Wazuh Rule Development
 
 ### Rule File
-All rules live in:
+The local rules live in:
 ```bash
 /var/ossec/etc/rules/local_rules.xml
 ```
 
-###  Custom Lists
+### To create Custom Lists (will see later)
 Create lists in:
 ```bash
 /var/ossec/etc/lists
