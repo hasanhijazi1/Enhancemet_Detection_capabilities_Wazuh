@@ -7,7 +7,7 @@ The work includes three main components:
 ---
 
 ## Technical Documentation  
-Located in the `documentation/Wazuh_Documentation.md` 
+Located in the `documentation/` directory.
 
 This document provides a **full technical walkthrough** of:
 
